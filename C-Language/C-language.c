@@ -148,7 +148,7 @@ double      双精度浮点数          %lf - 打印双精度浮点数
 //	return 0;
 //}
 
-//2、const修饰的常变量
+//2、const修饰的常变量 具有常属性 不能被改变
 //#include<stdio.h>
 //int main()
 //{
@@ -853,7 +853,7 @@ double      双精度浮点数          %lf - 打印双精度浮点数
 //    //而name是数组名其实本质上是地址
 //    strcpy(b1.name,"Python程序设计");
 //    //strcpy - string copy - 字符串拷贝 - 库函数 - string.h
-//    printf("书名:%s\n", b1.name);
+//    printf("书名:%s\n", b1.name);//书名:Python程序设计
 //    return 0;
 //}
 
@@ -4076,3 +4076,106 @@ double      双精度浮点数          %lf - 打印双精度浮点数
 //    printf("%d\n", sum);
 //    return 0;
 //}
+
+//为什么这个代码会进入死循环（Debug版本）
+//1、栈区的默认使用：先使用高地址处空间   再使用低地址空间 上面是高下面是低
+//2、数组随着下标的增长 地址是由低到高变化
+//3、先存放i（高地址）再存放arr（比i低的地址）随后由下标增长（越界后） 很快接近i
+//i=12后遇到了arr[12] 赋值为0 然后进入死循环
+//#include<stdio.h>
+//#include<stdlib.h>
+//int main()
+//{
+//    int i = 0;
+//    int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//    for (i = 0; i <= 12; i++)
+//    {
+//        printf("hehe\n");
+//        arr[i] = 0;
+//    }
+//    system("pause");
+//    return 0;
+//}
+
+//(目的地,存放的内容)    字符串拷贝
+//char* strcpy(char* strDestination,const char* Source);
+//#include<stdio.h>
+//#include<string.h>
+////void my_strcpy(char* dest, char* src)
+////{
+////    while (*src!='\0')
+////    {
+////        *dest = *src;
+////        src++;
+////        dest++;
+////    }
+////    *dest = *src;//'\0'
+////}
+////void my_strcpy(char* dest, char* src)//优化-让代码更健全
+////{
+////    if (dest != NULL && src != NULL)
+////    {
+////        while (*dest++ = *src++)
+////        {
+////            ;
+////        }
+////    }
+////}
+////#include<assert.h>
+////void my_strcpy(char* dest, char* src)//优化-如果传址错误可以发现
+////{
+////    assert(dest!=NULL);//断言 表达式为真就不发生任何事 表达式为假就报错
+////    assert(src != NULL);
+////    while (*dest++ = *src++)
+////    {
+////        ;
+////    }
+////}
+//#include<assert.h>
+////char* strcpy(char* strDestination,const char* Source);标准
+//char* my_strcpy(char* dest,const char* src)
+//{
+//    char* ret = dest;
+//    assert(dest!=NULL);//断言
+//    assert(src != NULL);//断言
+//    //把src指向的字符串拷贝到dest指向的空间，包含'\0'字符
+//    while (*dest++ = *src++)//如果dest和src放反了就会报错 因为const修饰的src不能被改变
+//    {
+//        ;
+//    }
+//    return ret;
+//}
+//int main()
+//{
+//    char arr1[] = "#############";
+//    char arr2[] = "hehe";
+//    printf("%s\n", my_strcpy(arr1, arr2));//链式访问 返回值作为另外一个函数的参数
+//    return 0;
+//}
+
+//const 细讲
+//#include<stdio.h>
+//int main()
+//{
+//    const int num = 10;//主观意愿不改变num 但是*p还是可以改变(num) 所以在int* 前也加const 程序报错
+//    const int* p = &num;
+//    //const 放在指针变量的*左边时 修饰的是*p,也就是说不能通过p来改变*p(num)的值
+//    //int num = 10;
+//    //int* p = &num;
+//    *p = 20;
+//    printf("%d\n", num);//err
+//    return 0;
+//}
+//#include<stdio.h>
+//int main()
+//{
+//    const int num = 10;
+//    int* const p = &num;
+//    //const 放在指针变量的*右边时 修饰的是指针变量p本身，p是可以改变num的值 但是p被限制了不能改变
+//    *p = 20;
+//    printf("%d\n", num);//20
+//    int n = 100;
+//    p = &n;//err 因为p被const修饰 不能改变 只能取num的地址
+//    return 0;
+//}
+
