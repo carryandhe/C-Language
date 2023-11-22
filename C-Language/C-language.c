@@ -4179,3 +4179,46 @@ double      双精度浮点数          %lf - 打印双精度浮点数
 //    return 0;
 //}
 
+//练习：模拟实现一个strcpy函数
+//#include<stdio.h>
+//#include<assert.h>
+//char* my_strcpy(char* dest,const char* src)
+//{
+//    char* ret = dest;
+//    assert(dest != NULL);
+//    assert(src != NULL);
+//    while (*dest++ = *src++)
+//    {
+//        ;
+//    }
+//    return ret;
+//}
+//int main()
+//{
+//    char arr1[] = "########";
+//    char arr2[] = "hehe";
+//    printf("%s\n", my_strcpy(arr1, arr2));
+//    return 0;
+//}
+
+//练习：模拟实现一个strlen函数
+//#include<stdio.h>
+//#include<assert.h>
+//int my_strlen(const char* arr)
+//{
+//    int count = 0;
+//    assert(arr != NULL);//保证指针的有效性
+//    while (*arr != '\0')
+//    {
+//        count++;
+//        arr++;
+//    }
+//    return count;
+//}
+//int main()
+//{
+//    char arr[] = "abcdefgh";
+//    int len = my_strlen(arr);
+//    printf("%d\n", len);
+//    return 0;
+//}
