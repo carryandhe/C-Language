@@ -4534,3 +4534,68 @@
 //第十节《指针的进阶》
 
 //1、字符指针
+//#include<stdio.h>
+//int main()
+//{
+//    char ch = 'w';
+//    char* pc = &ch;
+//    printf("%c\n", ch);
+//    printf("%s\n", pc);//遇到'\0'才停止
+//    return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//    char arr[] = "abcdef";
+//    char* pc = arr;
+//    printf("%s\n", arr);
+//    printf("%s\n", pc);
+//    return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//    char* p = "abcdef";//"abcdef"是一个常量字符串
+//    printf("%c\n", *p);//a  把字符串首字符的地址赋给了p
+//    printf("%s\n", p);//abcdef
+//    return 0;
+//}
+
+//练习：输出什么   haha
+//#include<stdio.h>
+//int main()
+//{
+//    char arr1[] = "abcdef";//在空间的地址指向不同
+//    char arr2[] = "abcdef";
+//    if (arr1 == arr2)
+//    {
+//        printf("hehe\n");
+//    }
+//    else
+//    {
+//        printf("haha\n");
+//    }
+//    return 0;
+//}
+
+//练习：输出什么       hehe
+//#include<stdio.h>
+//int main()
+//{
+//    char arr1[] = "abcdef";
+//    char arr2[] = "abcdef";
+//    const char* p1 = "abcdef";//*p是常量字符串 所以只存储了一份
+//    const char* p2 = "abcdef";
+//    if (p1 == p2)
+//    {
+//        printf("hehe\n");
+//    }
+//    else
+//    {
+//        printf("haha\n");
+//    }
+//    return 0;
+//}
+
